@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/passwordRequirements', (req, res) => {
-  res.send(require('./config')['password requirements']);
+  res.send(require('./config/config')['password requirements']);
 });
 
 app.get('/authentication_status', verifyToken, (req, res) => {

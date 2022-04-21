@@ -1,17 +1,20 @@
-import React from "react";
-import Nav from "./Nav";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Register from "./Register.js";
-import ChangePass from "./Changepass.js";
-import Login from "./Login.js";
-import Dashboard from "./Dashboard";
-import Forgotpass from "./Forgotpass";
-import Resetpass from "./Resetpass";
-import { SnackbarProvider } from "notistack";
+import React from 'react';
+import Nav from './Nav';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Register from './Register.js';
+import ChangePass from './Changepass.js';
+import Login from './Login.js';
+import Dashboard from './Dashboard';
+import Forgotpass from './Forgotpass';
+import Resetpass from './Resetpass';
+import { SnackbarProvider } from 'notistack';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme();
 
 export default function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <SnackbarProvider maxSnack={5}>
           <Nav />
@@ -25,6 +28,6 @@ export default function App() {
           </Switch>
         </SnackbarProvider>
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
