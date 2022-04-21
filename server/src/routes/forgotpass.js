@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const DB = require('../database');
-const config = process.env;
+
 const sendResetPass = require('../services/sendMail');
 
 router.post('/forgotpass', async (req, res) => {
@@ -16,13 +16,12 @@ router.post('/forgotpass', async (req, res) => {
       }
       const { id, email, firstName, lastName, password } = results[0];
       const userKey = config.TOKEN_KEY + password;
-      const paylode = {
+      const payload = {
         id: id,
         email: email,
       };
-      const token = jwt.sign(paylode, userKey, { expiresIn: '15m' });
-      const link = config.FRONT_URL + `/resetpass/${id}/${token}`;
-      // console.log("link: ",link)
+      const token = jwt.sign(payload, userKey, { expiresIn: '15m' });
+      const link = process.env.CLIENT_URL + `/resetpass/${id}/${token}`;
       sendResetPass(email, firstName, lastName, link);
       return res.status(200).send("Password link has been send to you're email");
     });
