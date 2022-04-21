@@ -10,13 +10,13 @@ We were tasked to simulate the differences between a vulnerable and a secured im
 In order to run this project you need to generate certificate.
 You can generate certificate using the following OpenSSL commands:
 
-- `cd server`
-- `mkdir cert && cd cert`
-- `openssl genrsa -out key.pem 2048`
-- `openssl req -new -sha256 -key key.pem -out csr.pem`
-- `openssl x509 -req -in csr.pem -signkey key.pem -out ryans-cert.pem`
+- `From root directory: mkdir cert && cd cert`
+- `openssl genrsa -out key.pem`
+- `openssl req -new -key key.pem -out csr.pem`
+- `openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem`
+- `rm csr.pem`
 
-For further explanation you can visit https://nodejs.org/api/tls.html
+For further explanation you can visit https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/
 
 ---
 
