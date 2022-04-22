@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-require('./database').initDB();
+const database = require('./database');
 
 const mysql = require('mysql');
 const cors = require('cors');
@@ -12,6 +12,7 @@ const path = require('path');
 const verifyToken = require('./middlewares/auth');
 
 dotenv.config();
+database.initDB();
 
 const PORT = process.env.PORT;
 
@@ -47,6 +48,17 @@ TLSserver.listen(PORT, function () {
 
 app.get('/', (req, res) => {
   res.send('Server is up and running');
+});
+
+app.get('/init', async (req, res) => {
+  const users = fs.readFileSync(path.join(__dirname, './database/security-db.sql')).toString();
+  const query = await database.getDbInstance().query(users,  (err, result) => {
+    if (err){
+      throw err;
+    }else{
+      res.send("Query run successfully");
+    }
+  });
 });
 
 app.get('/passwordRequirements', (req, res) => {

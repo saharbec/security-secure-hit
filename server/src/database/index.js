@@ -6,9 +6,9 @@ class DB {
   static initDB() {
     DB.dbInstance = mysql.createConnection({
       user: process.env.DB_USER,
-      host: 'localhost',
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
+      multipleStatements: true
     });
 
     //   DB.dbInstance.connect((err) => {
@@ -20,6 +20,7 @@ class DB {
   static getDbInstance() {
     return DB.dbInstance;
   }
+
 }
 
 module.exports = DB;

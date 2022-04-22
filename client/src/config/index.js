@@ -1,10 +1,10 @@
 const config = {
   server: {
     ip: 'localhost',
-    port: '9191',
+    port: '3005',
     protocol: 'https',
   },
-  serverUrl: 'https://localhost:9191',
+  serverUrl: 'https://localhost:3005',
 };
 
 export default config;
