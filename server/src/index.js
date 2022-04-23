@@ -50,17 +50,6 @@ app.get('/', (req, res) => {
   res.send('Server is up and running');
 });
 
-app.get('/init', async (req, res) => {
-  const users = fs.readFileSync(path.join(__dirname, './database/security-db.sql')).toString();
-  const query = await database.getDbInstance().query(users,  (err, result) => {
-    if (err){
-      throw err;
-    }else{
-      res.send("Query run successfully");
-    }
-  });
-});
-
 app.get('/passwordRequirements', (req, res) => {
   res.send(require('./config/config')['password requirements']);
 });

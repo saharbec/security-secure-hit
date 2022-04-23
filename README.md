@@ -3,7 +3,7 @@
 This project is a part of an academic course.
 We were tasked to simulate the differences between a vulnerable and a secured implementation of similar web servers.
 
-# Running Instructions
+# Running The project locally
 
 ## Certificate Generation
 
@@ -20,6 +20,10 @@ For further explanation you can visit https://nodejs.org/en/knowledge/HTTP/serve
 
 ---
 
+1. Start the DB (./db-docker)
+2. Start the backend (./backend)
+3. Start the frontend (./frontend)
+
 ## Set Environment Variables
 
 - PORT - Server port
@@ -31,3 +35,4 @@ For further explanation you can visit https://nodejs.org/en/knowledge/HTTP/serve
 - EMAIL_ADDRESS - Outlook email address for maintanance purposes (Password reset)
 - EMAIL_PASSWORD - Password for the `EMAIL_ADDRESS`
 - TOKEN_KEY - Secret key for `JWT` (JSONWebToken)
+
